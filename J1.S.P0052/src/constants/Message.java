@@ -1,5 +1,8 @@
 package constants;
 
+/**
+ * Class containing constant messages used in the application.
+ */
 public class Message {
     public static final String MSG_ENTER_CHOICE = "Enter your choice: ";
     public static final String MSG_INVALID_CHOICE = "Please input number from 1 to 5.";
