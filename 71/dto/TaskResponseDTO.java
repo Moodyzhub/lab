@@ -14,11 +14,12 @@ public class TaskResponseDTO {
     private String requirementName;
     private String taskTypeName;
     private String date;
-    private String time;
+    private double time;
     private String assignee;
     private String reviewer;
 
-    public TaskResponseDTO(int id, String requirementName, String taskTypeName, String date, String time, String assignee, String reviewer) {
+    public TaskResponseDTO(int id, String requirementName, String taskTypeName, String date, double time,
+            String assignee, String reviewer) {
         this.id = id;
         this.requirementName = requirementName;
         this.taskTypeName = taskTypeName;
@@ -60,11 +61,11 @@ public class TaskResponseDTO {
         this.date = date;
     }
 
-    public String getTime() {
+    public double getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(double time) {
         this.time = time;
     }
 

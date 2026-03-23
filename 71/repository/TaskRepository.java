@@ -5,7 +5,6 @@
 package repository;
 
 import dto.TaskRequestDTO;
-import dto.TaskResponseDTO;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,14 +22,18 @@ public class TaskRepository {
     // Lưu trữ danh sách task trong bộ nhớ với key là ID và value là Task object
     private final Map<Integer, Task> taskMap = new HashMap<>();
 
+    // Biến global (toàn cục) sinh ID tự động
+    private int currentId = 1;
+
     // thêm thông tin của Task vào cấu trúc dữ liệu Map
-    public void add(TaskRequestDTO dto, int id) throws Exception {
-        //Convert taskTypeId thành TaskType enum
+    public void add(TaskRequestDTO dto) throws Exception {
+        // Convert taskTypeId thành TaskType enum
         TaskType type = TaskType.fromId(dto.getTaskTypeId());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        
-        // Tạo đối tượng Task từ DTO với việc chuyển đổi dữ liệu:
-        // Parse string date thành Date object
+
+        // Tạo đối tượng Task từ DTO với việc chuyển đổi dữ liệu
+        int id = currentId++;
+
         Task task = new Task(
                 id,
                 type,
@@ -39,8 +42,7 @@ public class TaskRepository {
                 dto.getPlanFrom(),
                 dto.getPlanTo(),
                 dto.getAssignee(),
-                dto.getReviewer()
-        );
+                dto.getReviewer());
 
         taskMap.put(id, task);
     }

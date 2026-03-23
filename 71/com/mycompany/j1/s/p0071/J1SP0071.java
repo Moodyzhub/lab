@@ -42,7 +42,8 @@ public class J1SP0071 {
                                 Validator.checkEmpty(requirementName);
                                 break;
                             } catch (Exception e) {
-                                System.out.println(e.getMessage());
+                                System.out.println("Error: " + e.getMessage());
+                                e.printStackTrace();
                             }
                         }
                         int taskTypeId;
@@ -52,7 +53,8 @@ public class J1SP0071 {
                                 taskTypeId = Validator.parseInt(sc.nextLine());
                                 break;
                             } catch (Exception e) {
-                                System.out.println(e.getMessage());
+                                System.out.println("Error: " + e.getMessage());
+                                e.printStackTrace();
                             }
                         }
                         String date;
@@ -75,7 +77,8 @@ public class J1SP0071 {
                                 Validator.checkTime(planFrom);
                                 break;
                             } catch (Exception e) {
-                                System.out.println(e.getMessage());
+                                System.out.println("Error: " + e.getMessage());
+                                e.printStackTrace();
                             }
                         }
                         double planTo;
@@ -86,7 +89,8 @@ public class J1SP0071 {
                                 Validator.checkTime(planFrom, planTo);
                                 break;
                             } catch (Exception e) {
-                                System.out.println(e.getMessage());
+                                System.out.println("Error: " + e.getMessage());
+                                e.printStackTrace();
                             }
                         }
 
@@ -98,7 +102,8 @@ public class J1SP0071 {
                                 Validator.checkEmpty(assignee);
                                 break;
                             } catch (Exception e) {
-                                System.out.println(e.getMessage());
+                                System.out.println("Error: " + e.getMessage());
+                                e.printStackTrace();
                             }
                         }
                         String reviewer;
@@ -109,37 +114,41 @@ public class J1SP0071 {
                                 Validator.checkEmpty(reviewer);
                                 break;
                             } catch (Exception e) {
-                                System.out.println(e.getMessage());
+                                System.out.println("Error: " + e.getMessage());
+                                e.printStackTrace();
                             }
                         }
                         TaskRequestDTO dto = new TaskRequestDTO(requirementName, taskTypeId, date, planFrom, planTo,
                                 assignee, reviewer);
                         controller.createTask(dto);
                     } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                        System.out.println("Error: " + e.getMessage());
+                        e.printStackTrace();
                     }
 
                     break;
-                    // Xóa task theo ID
+                // Xóa task theo ID
                 case "2":
                     try {
                         System.out.print("Enter Task ID: ");
                         int id = Validator.parseInt(sc.nextLine());
                         controller.deleteTask(id);
                     } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                        System.out.println("Error: " + e.getMessage());
+                        e.printStackTrace();
                     }
 
                     break;
-                    // Hiển thị thông tin tất cả task
+                // Hiển thị thông tin tất cả task
                 case "3":
                     try {
                         controller.getAllTasks();
                     } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                        System.out.println("Error: " + e.getMessage());
+                        e.printStackTrace();
                     }
                     break;
-                    // Thoát và giải phóng bộ nhớ
+                // Thoát và giải phóng bộ nhớ
                 case "4":
                     running = false;
                     sc.close();

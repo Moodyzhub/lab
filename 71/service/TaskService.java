@@ -16,17 +16,14 @@ import repository.TaskRepository;
 public class TaskService {
 
     private final TaskRepository repository;
-    private int currentId;
 
     public TaskService() {
         repository = new TaskRepository();
-        currentId = 1;
     }
 
-    // Thêm task mới thông qua Repository và tăng Id tư động
+    // Thêm task mới thông qua Repository (ID được quản lý tự động trong Repository)
     public void createTask(TaskRequestDTO dto) throws Exception {
-        repository.add(dto, currentId);
-        currentId++;
+        repository.add(dto);
     }
 
     // Kiểm tra id có tồn tại không trước khi yêu cầu Repository xóa
@@ -49,7 +46,8 @@ public class TaskService {
 
         for (Task task : taskList) {
 
-            String time = task.getPlanFrom() + " - " + task.getPlanTo();
+            // String time = task.getPlanFrom() + " - " + task.getPlanTo();
+            double time = task.getPlanTo() - task.getPlanFrom();
 
             TaskResponseDTO dto = new TaskResponseDTO(
                     task.getId(),
