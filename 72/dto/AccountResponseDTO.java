@@ -5,11 +5,12 @@
 package dto;
 
 /**
- *
+ * DTO (Data Transfer Object) dùng để chứa dữ liệu trả về sau khi phản hồi 
  * @author huyca
  */
 public class AccountResponseDTO {
 
+    // Các trường thông tin sẽ trả về cho View
     private String username;
     private String name;
 

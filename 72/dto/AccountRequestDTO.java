@@ -5,11 +5,12 @@
 package dto;
 
 /**
- *
+ * DTO (Data Transfer Object) dùng để chuyển dữ liệu Request từ người dùng xuống Controller
  * @author huyca
  */
 public class AccountRequestDTO {
 
+    // Các trường thông tin nhận từ người dùng gốc dưới dạng chuỗi (String)
     private String username;
     private String password;
     private String name;

@@ -7,11 +7,12 @@ package model;
 import java.util.Date;
 
 /**
- *
+ * Lớp Account (Thực thể đại diện cho tài khoản người dùng)
  * @author huyca
  */
 public class Account {
 
+    // Các thuộc tính của tài khoản
     private String username;
     private String password;
     private String name;
@@ -20,6 +21,7 @@ public class Account {
     private String address;
     private Date dob;
 
+    // Default Constructor
     public Account() {
     }
 

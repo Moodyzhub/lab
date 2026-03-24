@@ -1,7 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-package com.mycompany.j1.s.p0072;
 
 import controller.AccountController;
 import dto.AccountRequestDTO;
@@ -20,6 +19,7 @@ public class J1SP0072 {
         Scanner sc = new Scanner(System.in);
         AccountController controller = new AccountController();
 
+        // Vòng lặp chính của chương trình, hiển thị menu
         while (true) {
             System.out.println("====== LOGIN PROGRAM ======");
             System.out.println("1. Add User");
@@ -27,9 +27,13 @@ public class J1SP0072 {
             System.out.println("3. Exit");
             System.out.print("Enter choice: ");
             int choice = Integer.parseInt(sc.nextLine());
+            
+            // Xử lý các lựa chọn từ người dùng
             switch (choice) {
+                // Case 1: Xử lý chức năng thêm người dùng (Add User)
                 case 1: {
                     String username;
+                    // Vòng lặp yêu cầu nhập và kiểm tra username
                     while (true) {
                         try {
                             System.out.print("Username: ");
@@ -49,11 +53,13 @@ public class J1SP0072 {
                         }
                     }
                     String password;
+                    // Vòng lặp yêu cầu nhập và kiểm tra mật khẩu
                     while (true) {
                         try {
                             System.out.print("Password: ");
                             password = sc.nextLine();
                             Validator.checkEmpty(password);
+                            // Mã hoá mật khẩu bằng MD5
                             password = MD5Util.encrypt(password);
                             break;
 
@@ -62,6 +68,7 @@ public class J1SP0072 {
                         }
                     }
                     String name;
+                    // Vòng lặp yêu cầu nhập và kiểm tra tên người dùng
                     while (true) {
                         try {
                             System.out.print("Name: ");
@@ -101,7 +108,7 @@ public class J1SP0072 {
                     String dob;
                     while (true) {
                         try {
-                            System.out.print("DOB (dd-MM-yyyy): ");
+                            System.out.print("DOB (dd/MM/yyyy): ");
                             dob = sc.nextLine();
                             Validator.checkDate(dob);
                             break;
@@ -109,12 +116,14 @@ public class J1SP0072 {
                             System.out.println(Message.DATE_INVALID);
                         }
                     }
-                    AccountRequestDTO dto
-                            = new AccountRequestDTO(username, password, name, phone, email, address, dob);
+                    
+                    // Khởi tạo DTO và lưu trữ người dùng thông qua controller
+                    AccountRequestDTO dto = new AccountRequestDTO(username, password, name, phone, email, address, dob);
                     controller.addAccount(dto);
                     System.out.println(Message.RE_SUCCESS);
                     break;
                 }
+                // Case 2: Xử lý chức năng đăng nhập
                 case 2: {
 
                     System.out.print("Username: ");
@@ -155,6 +164,7 @@ public class J1SP0072 {
 
                     break;
                 }
+                // Case 3: Thoát chương trình
                 case 3:
                     return;
                 default:
