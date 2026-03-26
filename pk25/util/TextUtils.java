@@ -1,10 +1,9 @@
 package util;
 
 import constants.Message;
-import jdk.nashorn.internal.ir.RuntimeNode;
-import org.omg.CORBA.Request;
+// import jdk.nashorn.internal.ir.RuntimeNode;
+// import org.omg.CORBA.Request;
 import dto.RequestDTO;
-
 public final class TextUtils {
 
     private TextUtils() {
